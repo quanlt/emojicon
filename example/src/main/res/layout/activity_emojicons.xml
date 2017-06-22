@@ -20,7 +20,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.rockerhieu.emojicon.example.EmojiconsActivity">
-
+    <TextView
+        android:id="@+id/text_emotion_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <io.github.rockerhieu.emojicon.EmojiconsView
         android:id="@+id/emojicons_view"
         android:layout_width="match_parent"

@@ -18,19 +18,23 @@ package com.rockerhieu.emojicon.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import java.util.Arrays;
 
+import io.github.rockerhieu.emojicon.EmojiconGridFragment;
 import io.github.rockerhieu.emojicon.EmojiconPage;
 import io.github.rockerhieu.emojicon.EmojiconsView;
 import io.github.rockerhieu.emojicon.emoji.Emojicon;
 
-public class EmojiconsActivity extends AppCompatActivity {
+public class EmojiconsActivity extends AppCompatActivity implements EmojiconGridFragment.OnEmojiconClickedListener{
 
+    private TextView mEmotionView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emojicons);
+        mEmotionView = (TextView) findViewById(R.id.text_emotion_view);
         EmojiconsView emojiconsView = (EmojiconsView) findViewById(R.id.emojicons_view);
         emojiconsView.setPages(Arrays.asList(
                 new EmojiconPage(Emojicon.TYPE_PEOPLE, null, false, R.drawable.ic_emoji_people_light),
@@ -39,5 +43,10 @@ public class EmojiconsActivity extends AppCompatActivity {
                 new EmojiconPage(Emojicon.TYPE_PLACES, null, false, R.drawable.ic_emoji_places_light),
                 new EmojiconPage(Emojicon.TYPE_SYMBOLS, null, false, R.drawable.ic_emoji_symbols_light)
         ));
+    }
+
+    @Override
+    public void onEmojiconClicked(Emojicon emojicon) {
+        mEmotionView.setText(emojicon.getEmoji());
     }
 }

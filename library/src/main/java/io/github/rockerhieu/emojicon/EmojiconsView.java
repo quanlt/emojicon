@@ -172,6 +172,9 @@ public class EmojiconsView extends FrameLayout implements ViewPager.OnPageChange
                 sparseArray.put(emojiGridView.getId(), savedStates[position]);
                 emojiGridView.restoreHierarchyState(sparseArray);
             }
+            if (context instanceof EmojiconGridFragment.OnEmojiconClickedListener) {
+                emojiGridView.setOnEmojiconClickedListener((EmojiconGridFragment.OnEmojiconClickedListener) context);
+            }
             return emojiGridView;
         }
 
